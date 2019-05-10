@@ -2,10 +2,10 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SignUpFormPage from './signUpCom';
-import { signUpAction } from '../../redux/actions/signUp/signUpActions';
+import LoginFormPage from './loginCom';
+import { loginAction } from '../../redux/actions/login/loginActions';
 
-class Signup extends Component {
+class Login extends Component {
   state = {
     userName: '',
     password: '',
@@ -16,18 +16,18 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSignUp = (event) => {
+  handleLogin = (event) => {
+    console.log('man****************')
     event.preventDefault();
     const { userName, password } = this.state;
-    this.props.signUpAction(userName, password);
+    this.handleValidation(userName, password)
+    this.props.loginAction(userName, password);
   }
 
-  componentDidUpdate(prevProps) {
-    console.log('red Man', prevProps)
+  handleValidation = (userName, password) => {
     const { registered } = this.props.users;
-    if (registered !== prevProps.users.registered) {
-      this.props.history.push('/login');
-      return;
+    if (registered[userName] === password) {
+      console.log('Yes man')
     }
   }
 
@@ -39,7 +39,7 @@ class Signup extends Component {
             <p className="reds"> I AM BLACK AND WHITE</p>
           </div>
           <div className="blacks">
-            <SignUpFormPage handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
+            <LoginFormPage handleInput={this.handleInput} handleLogin={this.handleLogin}/>
           </div>
         </div>
       </div>
@@ -50,4 +50,4 @@ const mapStateToProps = state => ({
   users: state.userData,
 });
 
-export default connect(mapStateToProps, { signUpAction })(Signup);
+export default connect(mapStateToProps, { loginAction })(Login);

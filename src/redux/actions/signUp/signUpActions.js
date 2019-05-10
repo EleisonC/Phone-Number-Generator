@@ -1,4 +1,4 @@
-import SIGNUP from '../actionTypes';
+import { SIGNUP } from '../actionTypes';
 
 const signUp = response => ({
   type: SIGNUP,
