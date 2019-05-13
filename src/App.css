@@ -72,3 +72,6 @@ input {
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+a {
+  color: black !important;
+}
