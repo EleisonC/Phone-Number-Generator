@@ -22,6 +22,20 @@ class Dashboard extends Component {
       this.setState({genNumbers: generatedNumbers});
     }
   }
+  handleSort = (event) => {
+    event.preventDefault();
+    const { value } = event.target;
+    const { genNumbers } = this.state;
+    if (value === '1') {
+      const asscgenNumbers = genNumbers.sort((a, b) => 0 - (a > b ? -1 : 1))
+      this.setState({genNumbers: asscgenNumbers})
+    } else if (value === '2') {
+      const asscgenNumbers = genNumbers.sort((a, b) => 0 - (a > b ? 1 : -1))
+      this.setState({genNumbers: asscgenNumbers})
+    } else {
+      return;
+    }
+  };
 
   handleInput = (event) => {
     const { name, value } = event.target;
@@ -59,7 +73,7 @@ class Dashboard extends Component {
                 </MDBCol>
               </MDBRow>
               <MDBRow className="sortField">
-                <select className="browser-default custom-select sortSelect">
+                <select onChange={this.handleSort} className="browser-default custom-select sortSelect">
                   <option>Choose Your Sort Option</option>
                   <option value="1">Ascending</option>
                   <option value="2">Descending</option>
