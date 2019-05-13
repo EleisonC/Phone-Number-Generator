@@ -7,6 +7,7 @@ import {
 import phoneNumberGen from '../../utilities/phoneNumberGen';
 import { phoneNumberGenAction } from '../../redux/actions/phoneNumberGen/numGeneratorActions';
 import { connect } from 'react-redux';
+import { CSVLink } from 'react-csv';
 import TablePage from './tableDash';
 
 class Dashboard extends Component {
@@ -80,7 +81,18 @@ class Dashboard extends Component {
                 </select>
               </MDBRow>
               <MDBRow className="sortField">
-                <MDBBtn color="white" className="downloadButton">Download Phone Numbers</MDBBtn>
+              {genNumbers.length > 0 ? 
+                <MDBBtn color="white" className="downloadButton">
+                <CSVLink data={[genNumbers]} filename={'my-phone-file.csv'}>
+                  Download Phone Numbers
+                </CSVLink>
+                </MDBBtn> 
+                : 
+                <MDBBtn color="white" className="downloadButton" disabled>
+                <CSVLink data={[genNumbers]} filename={'my-phone-file.csv'}>
+                  Download Phone Numbers
+                </CSVLink>
+                </MDBBtn>}
               </MDBRow>
               <MDBRow className="sortField">
                 <MDBBtn color="white" className="downloadButton">LOGOUT</MDBBtn>
