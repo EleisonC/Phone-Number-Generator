@@ -46,3 +46,29 @@ input {
   background-color: #3b3b3b;
   color: #000;
 }
+.blackDashboard {
+  background-color: black;
+  height: -webkit-fill-available;
+}
+.phoneNumberGenerator {
+ text-align: center
+}
+.sortField {
+  margin-top: 7rem;
+}
+.sortSelect {
+  width: 70%;
+  margin-left: 3.4rem;
+}
+.downloadButton {
+  margin: 0 auto;
+}
+.whiteDashboard {
+  height: -webkit-fill-available;
+}
+table-wrapper-scroll-y {
+  display: block;
+  max-height: -webkit-fill-available;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
