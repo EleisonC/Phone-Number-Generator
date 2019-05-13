@@ -17,7 +17,6 @@ class Login extends Component {
   };
 
   handleLogin = (event) => {
-    console.log('man****************')
     event.preventDefault();
     const { userName, password } = this.state;
     this.handleValidation(userName, password)

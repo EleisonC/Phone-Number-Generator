@@ -7,6 +7,7 @@ import configureStore from './redux/store';
 import './App.css';
 import Login from './components/login';
 import Signup from './components/signUp';
+import Dashboard from './components/dashBoard';
 
 const App = () => {
   const store = configureStore();
@@ -15,8 +16,9 @@ const App = () => {
       <BrowserRouter>
         <div className="App">
           <Switch>
-            <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </BrowserRouter>
