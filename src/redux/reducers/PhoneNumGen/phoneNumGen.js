@@ -1,4 +1,4 @@
-import { NUMBER_GENERATOR } from '../../actions/actionTypes';
+import { NUMBER_GENERATOR, CLEARDATA } from '../../actions/actionTypes';
 
 const initialState = {
   generatedNumbers: [],
@@ -12,6 +12,13 @@ export default (state = initialState, action) => {
         generatedNumbers: [
           ...state.generatedNumbers,
           ...action.payload,
+        ],
+      };
+    }
+    case CLEARDATA: {
+      return {
+        ...state,
+        generatedNumbers: [
         ],
       };
     }

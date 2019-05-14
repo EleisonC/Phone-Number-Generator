@@ -5,6 +5,7 @@ import {
   MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,
 } from 'mdbreact';
 import phoneNumberGen from '../../utilities/phoneNumberGen';
+import { loginAction } from '../../redux/actions/login/loginActions';
 import { phoneNumberGenAction } from '../../redux/actions/phoneNumberGen/numGeneratorActions';
 import { connect } from 'react-redux';
 import { CSVLink } from 'react-csv';
@@ -17,11 +18,19 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log('red Man')
     const { generatedNumbers } = this.props.generatedNumbers;
     if (generatedNumbers !== prevProps.generatedNumbers.generatedNumbers) {
-      this.setState({genNumbers: generatedNumbers});
+      const newNumberCount = generatedNumbers.length - prevProps.generatedNumbers.generatedNumbers.length
+      this.setState({
+        genNumbers: generatedNumbers,
+        numberCount: newNumberCount,
+      });
     }
+  }
+
+  componentDidMount() {
+    const { generatedNumbers } = this.props.generatedNumbers;
+    this.setState({genNumbers: generatedNumbers});
   }
   handleSort = (event) => {
     event.preventDefault();
@@ -38,6 +47,12 @@ class Dashboard extends Component {
     }
   };
 
+  handleLogout = async () => {
+    this.props.phoneNumberGenAction('clear');
+    this.props.loginAction('clear', null, null);
+    await this.props.history.push('/login');
+  }
+
   handleInput = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -46,13 +61,16 @@ class Dashboard extends Component {
   handleGenerate = async () => {
     const phoneNumbers = new phoneNumberGen();
     const { count } = this.state;
-    const nums = await phoneNumbers.generate(count);
-    this.props.phoneNumberGenAction(nums);
+    if (count.length > 0) {
+      const nums = await phoneNumbers.generate(count);
+      this.props.phoneNumberGenAction(nums);
+    } else {
+      return;
+    }
   }
 
   render() {
     const { genNumbers } = this.state;
-    console.log(genNumbers, 'yes render')
     return (
       <React.Fragment>
         <MDBContainer fluid>
@@ -66,11 +84,20 @@ class Dashboard extends Component {
                   name="count"
                   onChange={this.handleInput}
                   />
+                  {genNumbers.length > 10000 ? 
+                  <MDBBtn
+                  onClick={this.handleGenerate}
+                  disabled
+                  color="white">
+                  Generate Phone Numbers
+                  </MDBBtn>
+                  :
                   <MDBBtn
                   onClick={this.handleGenerate}
                   color="white">
                   Generate Phone Numbers
                   </MDBBtn>
+                  }
                 </MDBCol>
               </MDBRow>
               <MDBRow className="sortField">
@@ -95,7 +122,12 @@ class Dashboard extends Component {
                 </MDBBtn>}
               </MDBRow>
               <MDBRow className="sortField">
-                <MDBBtn color="white" className="downloadButton">LOGOUT</MDBBtn>
+                <MDBBtn
+                color="white"
+                className="downloadButton"
+                onClick={this.handleLogout}>
+                LOGOUT
+                </MDBBtn>
               </MDBRow>
             </MDBCol>
             <MDBCol md="9" className="whiteDashboard">
@@ -112,4 +144,4 @@ const mapStateToProps = state => ({
   generatedNumbers: state.generatedNumber,
 });
 
-export default connect(mapStateToProps, { phoneNumberGenAction })(Dashboard);
+export default connect(mapStateToProps, { phoneNumberGenAction, loginAction })(Dashboard);

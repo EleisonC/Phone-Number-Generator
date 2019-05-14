@@ -19,11 +19,14 @@ class Signup extends Component {
   handleSignUp = (event) => {
     event.preventDefault();
     const { userName, password } = this.state;
-    this.props.signUpAction(userName, password);
+    if (userName.length >= 3 && password.length >= 3) {
+      this.props.signUpAction(userName, password);
+    } else {
+      return;
+    }
   }
 
   componentDidUpdate(prevProps) {
-    console.log('red Man', prevProps)
     const { registered } = this.props.users;
     if (registered !== prevProps.users.registered) {
       this.props.history.push('/login');
