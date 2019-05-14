@@ -1,11 +1,18 @@
 /* eslint-disable import/prefer-default-export */
-import { NUMBER_GENERATOR } from '../actionTypes';
+import { NUMBER_GENERATOR, CLEARDATA  } from '../actionTypes';
 
 const generatePhoneNumbers = response => ({
   type: NUMBER_GENERATOR,
   payload: response,
 });
+const clearPhoneNumbers = () => ({
+  type: CLEARDATA,
+});
 
 export const phoneNumberGenAction = data => (dispatch) => {
-  dispatch(generatePhoneNumbers(data));
+  if (data === 'clear') {
+    dispatch(clearPhoneNumbers());
+  } else {
+    dispatch(generatePhoneNumbers(data));
+  }
 };

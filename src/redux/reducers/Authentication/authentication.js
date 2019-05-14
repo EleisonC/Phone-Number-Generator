@@ -1,4 +1,4 @@
-import { SIGNUP, LOGIN } from '../../actions/actionTypes';
+import { SIGNUP, LOGIN, CLEARDATA } from '../../actions/actionTypes';
 
 const initialState = {
   registered: {},
@@ -23,6 +23,13 @@ export default (state = initialState, action) => {
         ...state,
         currentUser: {
           ...user,
+        },
+      };
+    }
+    case CLEARDATA: {
+      return {
+        ...state,
+        currentUser: {
         },
       };
     }

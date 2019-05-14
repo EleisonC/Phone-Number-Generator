@@ -20,13 +20,22 @@ class Login extends Component {
     event.preventDefault();
     const { userName, password } = this.state;
     this.handleValidation(userName, password)
-    this.props.loginAction(userName, password);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { currentUser } = this.props.users;
+    if (currentUser !== prevProps.users.currentUser) {
+      this.props.history.push('/Dashboard');
+      return;
+    }
   }
 
   handleValidation = (userName, password) => {
     const { registered } = this.props.users;
     if (registered[userName] === password) {
-      console.log('Yes man')
+      this.props.loginAction(null, userName, password);
+    } else {
+      return;
     }
   }
 
