@@ -9,6 +9,12 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import Signup from '..';
 
+const Enzyme = require('enzyme');
+const EnzymeAdapter = require('enzyme-adapter-react-16');
+
+// Setup enzyme's react adapter
+Enzyme.configure({ adapter: new EnzymeAdapter() });
+
 describe('Sign Up Page', () => {
   const store = configureStore([thunk])({
     userData: {},

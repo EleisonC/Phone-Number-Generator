@@ -10,6 +10,11 @@ import { MemoryRouter } from 'react-router-dom';
 import Dashboard from '../index';
 import TablePage from '../tableDash';
 
+const Enzyme = require('enzyme');
+const EnzymeAdapter = require('enzyme-adapter-react-16');
+
+// Setup enzyme's react adapter
+Enzyme.configure({ adapter: new EnzymeAdapter() });
 describe('dashboard Page', () => {
   const store = configureStore([thunk])({
     generatedNumber: {
