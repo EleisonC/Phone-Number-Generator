@@ -11,7 +11,7 @@ const initialState = {};
 const persistConfig = {
   key: 'root',
   storage,
-  blackList: ['generatedNumber'],
+  blacklist: ['generatedNumber'],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

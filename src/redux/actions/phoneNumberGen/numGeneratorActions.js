@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { NUMBER_GENERATOR, CLEARDATA  } from '../actionTypes';
+import { NUMBER_GENERATOR, CLEARDATA } from '../actionTypes';
 
 const generatePhoneNumbers = response => ({
   type: NUMBER_GENERATOR,

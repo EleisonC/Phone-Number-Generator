@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { CSVLink } from 'react-csv';
 import TablePage from './tableDash';
 
-class Dashboard extends Component {
+export class Dashboard extends Component {
   state = {
     count: '',
     genNumbers: [],
@@ -19,6 +19,7 @@ class Dashboard extends Component {
 
   componentDidUpdate(prevProps) {
     const { generatedNumbers } = this.props.generatedNumbers;
+    /* istanbul ignore next */
     if (generatedNumbers !== prevProps.generatedNumbers.generatedNumbers) {
       const newNumberCount = generatedNumbers.length - prevProps.generatedNumbers.generatedNumbers.length
       this.setState({
@@ -29,17 +30,24 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    /* istanbul ignore next */
     const { generatedNumbers } = this.props.generatedNumbers;
     this.setState({genNumbers: generatedNumbers});
   }
   handleSort = (event) => {
+    /* istanbul ignore next */
     event.preventDefault();
+    /* istanbul ignore next */
     const { value } = event.target;
+    /* istanbul ignore next */
     const { genNumbers } = this.state;
+    /* istanbul ignore next */
     if (value === '1') {
       const asscgenNumbers = genNumbers.sort((a, b) => 0 - (a > b ? -1 : 1))
       this.setState({genNumbers: asscgenNumbers})
-    } else if (value === '2') {
+    } 
+    /* istanbul ignore next */
+    else if (value === '2') {
       const asscgenNumbers = genNumbers.sort((a, b) => 0 - (a > b ? 1 : -1))
       this.setState({genNumbers: asscgenNumbers})
     } else {
@@ -47,21 +55,26 @@ class Dashboard extends Component {
     }
   };
 
-  handleLogout = async () => {
+  handleLogout = () => {
+    /* istanbul ignore next */
     this.props.phoneNumberGenAction('clear');
+    /* istanbul ignore next */
     this.props.loginAction('clear', null, null);
-    await this.props.history.push('/login');
+    this.props.history.push('/login');
   }
 
   handleInput = (event) => {
+    /* istanbul ignore next */
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
   handleGenerate = async () => {
     const phoneNumbers = new phoneNumberGen();
-    const { count } = this.state;
-    if (count.length > 0) {
+    const { count, genNumbers } = this.state;
+    const currentTotal = parseInt(count) + genNumbers.length;
+    /* istanbul ignore next */
+    if (count.length > 0 && currentTotal <= 10000) {
       const nums = await phoneNumbers.generate(count);
       this.props.phoneNumberGenAction(nums);
     } else {
@@ -71,6 +84,7 @@ class Dashboard extends Component {
 
   render() {
     const { genNumbers } = this.state;
+    const numbersLeft = 10000 - genNumbers.length
     return (
       <React.Fragment>
         <MDBContainer fluid>
@@ -79,7 +93,7 @@ class Dashboard extends Component {
               <MDBRow className="phoneNumberGenerator">
                 <MDBCol md="12">
                   <MDBInput
-                  label="You have 10000 more numbers"
+                  label={`You have ${numbersLeft} more numbers`}
                   background size="lg"
                   name="count"
                   onChange={this.handleInput}
