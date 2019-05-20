@@ -5,15 +5,8 @@ jobs:
      - image: alpine:3.7
     steps:
       - checkout
-
-      - run:
-          name: Update node package manager
-          command: 'npm install -g npm@latest'
-      
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
 
       - run:
           name: Install dependencies
@@ -27,4 +20,4 @@ jobs:
       # run tests!
       - run: 
           name: test
-          command: npm run test
+          command: npm test -- --coverage
