@@ -3,4 +3,4 @@ node_js:
   - '11.9.0'
 
 script:
-  - yarn test -- -u --coverage
+  - npm test -- -u --coverage
