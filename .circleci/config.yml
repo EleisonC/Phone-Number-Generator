@@ -6,10 +6,6 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Update node package manager
-          command: 'sudo npm install -g npm@latest'
-      
       # Download and cache dependencies
       - restore_cache:
           keys:
