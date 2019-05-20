@@ -43,7 +43,6 @@
     "not op_mini all"
   ],
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",
