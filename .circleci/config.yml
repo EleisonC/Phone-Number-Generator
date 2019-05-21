@@ -27,4 +27,4 @@ jobs:
           name: Code-coverage
           command: |
             sudo apt-get -y update && sudo apt-get install -y lcov
-            npm coverage
+            npm run coverage
