@@ -56,7 +56,6 @@ class Login extends Component {
             <MDBBtn
                 color="white"
                 className="downloadButton Login btn-black"
-                /* istanbul ignore next */
                 onClick={() => this.props.history.push('/')}>
                 SIGN-UP
             </MDBBtn>

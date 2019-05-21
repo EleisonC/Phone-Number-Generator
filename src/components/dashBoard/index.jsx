@@ -64,12 +64,14 @@ export class Dashboard extends Component {
     this.props.phoneNumberGenAction('clear');
     /* istanbul ignore next */
     this.props.loginAction('clear', null, null);
+    /* istanbul ignore next */
     this.props.history.push('/login');
   }
 
   handleInput = (event) => {
     /* istanbul ignore next */
     const { name, value } = event.target;
+    /* istanbul ignore next */
     this.setState({ [name]: value });
   };
 
