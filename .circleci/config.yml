@@ -22,11 +22,9 @@ jobs:
       - run: 
           name: test
           command: npm test -- --coverage -u
-   
-    COVERALLS_REPO_TOKEN: eSUWF4QMFNAFQ9qRX2jPXhpub5WGyprtU
-    COVERALLS_PARALLEL: true
 
-    notify:
-      webhooks:
-          - url: https://coveralls.io/webhook?repo_token=eSUWF4QMFNAFQ9qRX2jPXhpub5WGyprtU
-
+      - run: # Run Coverage
+          name: Code-coverage
+          command: |
+            sudo apt-get -y update && sudo apt-get install -y lcov
+            npm coverage

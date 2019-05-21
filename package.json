@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-free": "^5.8.2",
     "axios": "^0.18.0",
     "bootstrap-css-only": "^4.3.1",
+    "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "enzyme-to-json": "^3.3.5",
@@ -31,7 +32,7 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "test:watch": "jest --watch",
-    "coverage": "test --coverage"
+    "coverage": "yarn test -- --coverage --coverageDirectory=coverage && cat ./coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
