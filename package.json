@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "test:watch": "jest --watch",
-    "coverage": "yarn test -- --coverage --coverageDirectory=coverage && cat ./coverage/lcov.info | coveralls"
+    "coverage": "npm test -- --coverage -u --coverageDirectory=coverage && cat ./coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
