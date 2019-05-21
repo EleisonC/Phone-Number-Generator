@@ -1,0 +1,91 @@
+.whites {
+  background-color: white;
+  height: 100%;
+  width: 35%;
+  float: left;
+  box-sizing: border-box;
+  text-align: -webkit-center;
+  padding-top: 2rem;
+}
+.blacks {
+  background-color: black;
+  height: 100%;
+  width: 65%;
+  float: left;
+  border-left: 15.625rem solid white;
+  box-sizing: border-box;
+  border-bottom: 56rem solid transparent;
+  align-content: center;
+  display: flex;
+}
+.baserow {
+  height: 100vh;
+}
+.signUpCard {
+  display: inline-block;
+  margin-top: 16rem;
+}
+.signUpCol6 {
+  text-align: initial;
+  color: #ffffff !important;
+}
+.signUpRow {
+  text-align: -webkit-center;
+  display: inline-block;
+  width: -webkit-fill-available;
+}
+label {
+  color: #c2b7b7 !important;
+}
+input {
+  color: #ffffff !important;
+  background-color: black !important;
+}
+.btn-elegant {
+  background-color: #ffffff !important;
+  color: #000;
+}
+.btn-elegant:hover {
+  background-color: #3b3b3b;
+  color: #000;
+}
+.blackDashboard {
+  background-color: black;
+  height: -webkit-fill-available;
+}
+.phoneNumberGenerator {
+ text-align: center
+}
+.sortField {
+  margin-top: 7rem;
+}
+.sortSelect {
+  width: 70%;
+  margin-left: 3.4rem;
+}
+.downloadButton {
+  margin: 0 auto;
+}
+.whiteDashboard {
+  height: -webkit-fill-available;
+}
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: -webkit-fill-available !important;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+a {
+  color: black !important;
+}
+
+h1 {
+  font-family: 'Fredericka the Great', cursive;
+}
+.Login {
+  top: 5.8rem;
+  color: white;
+}
+.nums {
+  margin-left: 3rem;
+}
