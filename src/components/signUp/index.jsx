@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SignUpFormPage from './signUpCom';
 import { signUpAction } from '../../redux/actions/signUp/signUpActions';
+import { MDBBtn } from 'mdbreact';
 
 class Signup extends Component {
   state = {
@@ -44,6 +45,14 @@ class Signup extends Component {
       <div>
         <div className="baserow">
           <div className="whites">
+            <h1 class="display-1">Phone Number Generator</h1>
+            <MDBBtn
+                color="white"
+                className="downloadButton Login btn-black"
+                /* istanbul ignore next */
+                onClick={() => this.props.history.push('/login')}>
+                LOGIN
+            </MDBBtn>
           </div>
           <div className="blacks">
             <SignUpFormPage handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>

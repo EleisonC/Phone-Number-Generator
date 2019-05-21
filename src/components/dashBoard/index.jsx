@@ -14,6 +14,8 @@ import TablePage from './tableDash';
 export class Dashboard extends Component {
   state = {
     count: '',
+    max: 0,
+    min: 0,
     genNumbers: [],
   }
 
@@ -25,6 +27,8 @@ export class Dashboard extends Component {
       this.setState({
         genNumbers: generatedNumbers,
         numberCount: newNumberCount,
+        max: Math.max(...generatedNumbers),
+        min: Math.min(...generatedNumbers),
       });
     }
   }
@@ -60,12 +64,14 @@ export class Dashboard extends Component {
     this.props.phoneNumberGenAction('clear');
     /* istanbul ignore next */
     this.props.loginAction('clear', null, null);
+    /* istanbul ignore next */
     this.props.history.push('/login');
   }
 
   handleInput = (event) => {
     /* istanbul ignore next */
     const { name, value } = event.target;
+    /* istanbul ignore next */
     this.setState({ [name]: value });
   };
 
@@ -83,7 +89,7 @@ export class Dashboard extends Component {
   }
 
   render() {
-    const { genNumbers } = this.state;
+    const { genNumbers, max, min } = this.state;
     const numbersLeft = 10000 - genNumbers.length
     return (
       <React.Fragment>
@@ -145,6 +151,8 @@ export class Dashboard extends Component {
               </MDBRow>
             </MDBCol>
             <MDBCol md="9" className="whiteDashboard">
+              <span className="nums">Max Number: {max}</span>
+              <span className="nums">Min Number: {min}</span>
               <TablePage phoneNumbers={genNumbers} />
             </MDBCol>
           </MDBRow>
