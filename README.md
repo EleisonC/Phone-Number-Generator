@@ -1,4 +1,4 @@
-# random-phone-number-generator
+# Phone-number-generator
 Generates random phone numbers for a telecommunications company
 
 [![Build Status](https://travis-ci.org/EleisonC/Phone-Number-Generator.svg?branch=Develop)](https://travis-ci.org/EleisonC/Phone-Number-Generator)
@@ -16,7 +16,7 @@ The application indicates the total number of phone numbers generated and the li
 ### Clone the repository
 ```
 $ While in the directory you want to clone the project forexample `/Desktop`
-$ git clone https://github.com/hadijahkyampeire/random-phone-number-generator
+$ git clone https://github.com/EleisonC/Phone-Number-Generator.git
 $ cd random-phone-number-generator in the directory of the package.json
 ```
 
