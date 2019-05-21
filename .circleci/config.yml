@@ -23,3 +23,12 @@ jobs:
           name: test
           command: npm test -- --coverage -u
 
+      machine:
+        environment:
+          COVERALLS_REPO_TOKEN: eSUWF4QMFNAFQ9qRX2jPXhpub5WGyprtU
+          COVERALLS_PARALLEL: true
+
+      notify:
+        webhooks:
+          - url: https://coveralls.io/webhook?repo_token=eSUWF4QMFNAFQ9qRX2jPXhpub5WGyprtU
+
