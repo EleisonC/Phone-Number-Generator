@@ -8,6 +8,7 @@ const generatePhoneNumbers = response => ({
 const clearPhoneNumbers = () => ({
   type: CLEARDATA,
 });
+// I have clean code
 
 export const phoneNumberGenAction = data => (dispatch) => {
   if (data === 'clear') {
